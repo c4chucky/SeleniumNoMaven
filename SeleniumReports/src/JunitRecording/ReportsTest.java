@@ -21,17 +21,20 @@ class ReportsTest {
 	public void RunReport() throws InterruptedException {
 		
 		String path = System.getProperty("user.dir");
+		String[] users = {"SAPPERF28", "SAPPERF29", "SAPPERF27"};
 		
 		System.setProperty("webdriver.chrome.driver", path+"/Resources/chromedriver.exe");
-		 WebDriver driver = new ChromeDriver();
-		 driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 		 
-		navigateToReport(driver);
+		 for (String user : users) {
+			 WebDriver driver = new ChromeDriver();
+			 driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+			 navigateToReport(driver, user);
+		 }
 		
 	}
 	
-	public static void navigateToReport(WebDriver driver) throws InterruptedException {
-		String username = "SAPPERF28@tauranga.govt.nz";
+	public static void navigateToReport(WebDriver driver, String user) throws InterruptedException {
+		String username = user+"@tauranga.govt.nz";
 		String password = "5AP-User!";
 		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 		WebDriverWait wait=new WebDriverWait(driver, 20);
@@ -62,6 +65,7 @@ class ReportsTest {
 		driver.findElement(By.xpath("//a[@id='homeBtn']/span[.='']")).click();
 		Thread.sleep(2000);
 		}
+		driver.close();
 	  }
 
 }
