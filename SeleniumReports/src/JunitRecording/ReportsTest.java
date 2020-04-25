@@ -20,17 +20,20 @@ class ReportsTest {
 	@Test
 	public void RunReport() throws InterruptedException {
 		
+		int iterations = 12;
 		String path = System.getProperty("user.dir");
 		String[] users = {"SAPPERF28", "SAPPERF29", "SAPPERF27"};
 		
 		System.setProperty("webdriver.chrome.driver", path+"/Resources/chromedriver.exe");
 		 
+		for (int i = 1; i < iterations; i++) {
 		 for (String user : users) {
 			 WebDriver driver = new ChromeDriver();
 			 driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
 			 navigateToReport(driver, user);
-		 }
-		
+		 	}
+		 Thread.sleep(30000);
+		}
 	}
 	
 	public static void navigateToReport(WebDriver driver, String user) throws InterruptedException {
