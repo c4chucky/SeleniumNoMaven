@@ -13,6 +13,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import junit.framework.Assert;
+
 import org.openqa.selenium.interactions.Actions;
 
 class ReportsTest {
@@ -20,7 +23,7 @@ class ReportsTest {
 	@Test
 	public void RunReport() throws InterruptedException {
 		
-		int iterations = 12;
+		int iterations = 2;
 		String path = System.getProperty("user.dir");
 		String[] users = {"SAPPERF28", "SAPPERF29", "SAPPERF27"};
 		
@@ -65,7 +68,10 @@ class ReportsTest {
 		for (int i=1; i<=3; i++) {
 		driver.findElement(By.xpath("//div[@id='dashboardGroups']//div[@class='sapUshellEmptyLinksAreaPlaceHolder sapUshellLinksAreaHidden sapUshellTileContainer']//ul[@role='listbox']/li["+i+"]//div[@class='sapUiJSView sapUiView sapUiViewDisplayBlock']/div[@role='button']//span[@class='sapMGTTitle sapMText sapMTextMaxWidth sapUiSelectable']/span[@class='sapMTextLineClamp sapMTextMaxLine']")).click();
 		Thread.sleep(10000);
-		driver.findElement(By.xpath("//a[@id='homeBtn']/span[.='']")).click();
+		driver.findElement(By.xpath("//div[@id='centerViewPort']/div[@class='sapUShellApplicationContainer sapUshellApplicationPage sapUshellDefaultBackground sapUshellViewPortItemSlideFrom']/div[@class='sapUShellApplicationContainer sapUiComponentContainer']//div[@class='sapUiBody sapZenDshDsh']/div[@class='sapbi_snippet_ROOT']/div[@class='designmodeborder sapUiLayoutAbs sapUiLayoutAbsOvrflwXHidden sapUiLayoutAbsOvrflwYHidden zenControl zenborder']/div[1]/div[@class='sapUiLayoutAbs sapUiLayoutAbsOvrflwXHidden sapUiLayoutAbsOvrflwYHidden zenControl zenborder']/div[2]/div[@class='sapUiLayoutAbs sapUiLayoutAbsOvrflwXHidden sapUiLayoutAbsOvrflwYHidden sapbi_body zenControl zenborder']/div[@class='sapUiLayoutAbsPos']//div[@class='sapUiLoSplitter sapUiLoSplitterH zenControl zenborder']/section[1]//div[@class='sapContrastPlus sapMNav zenControl zenNavigationPanelM']/div/section[@class='sapMPageEnableScrolling']/div/section[1]/div/section[@class='sapMPageEnableScrolling']//div[@role='toolbar']/div[@role='heading']/span[.='DIMENSIONS']"));
+		driver.navigate().back();
+		
+		//driver.findElement(By.xpath("//a[@id='backBtn']/span[.='']")).click();
 		Thread.sleep(2000);
 		}
 		driver.close();
