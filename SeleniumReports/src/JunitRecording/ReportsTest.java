@@ -176,7 +176,8 @@ class ReportsTest {
 			  throws IOException {
 			    String str = method + " , " + loadTime + "ms";
 			    String path = System.getProperty("user.dir");
-			    BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/Reports/LoadTimeReport_" + DateOfToday() + ".csv"));
+			    BufferedWriter writer = LogFile();
+			    //BufferedWriter writer = new BufferedWriter(new FileWriter(path+"/Reports/LoadTimeReport_" + DateOfToday() + ".csv"));
 			    writer.append(str); 
 			    writer.close();
 			}
